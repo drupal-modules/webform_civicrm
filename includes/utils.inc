@@ -1554,13 +1554,13 @@ function wf_crm_user_cid($id = NULL, $type = 'uf') {
  *
  * @return string
  */
-function wf_crm_display_name($cid) {
+function wf_crm_display_name($cid, $escape = TRUE) {
   if (!$cid || !is_numeric($cid)) {
     return '';
   }
   civicrm_initialize();
   $result = wf_civicrm_api('contact', 'get', ['id' => $cid, 'return.display_name' => 1, 'is_deleted' => 0]);
-  return check_plain(wf_crm_aval($result, "values:$cid:display_name", ''));
+  return $escape ? check_plain(wf_crm_aval($result, "values:$cid:display_name", '')) : wf_crm_aval($result, "values:$cid:display_name", '');
 }
 
 /**

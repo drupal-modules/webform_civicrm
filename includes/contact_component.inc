@@ -585,7 +585,7 @@ function wf_crm_fill_contact_value($node, $component, &$element, $ids = NULL) {
  * Implements _webform_display_component().
  */
 function _webform_display_civicrm_contact($component, $value, $format = 'html') {
-  $display = empty($value[0]) ? '' : wf_crm_display_name($value[0]);
+  $display = empty($value[0]) ? '' : wf_crm_display_name($value[0], FALSE);
   if ($format == 'html' && $display && user_access('access CiviCRM')) {
     $display = l($display, 'civicrm/contact/view', [
       'alias' => TRUE,
