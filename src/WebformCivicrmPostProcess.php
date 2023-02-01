@@ -2720,7 +2720,13 @@ class WebformCivicrmPostProcess extends WebformCivicrmBase implements WebformCiv
     // During submission preprocessing this is used to alter the submission
     if ($value !== NULL) {
       $data[$fid] = $value;
-      $webform_submission->setData($data);
+      if (!empty($this->form_state)) {
+        $webform_submission->setData($data);
+      }
+      else {
+        $this->submission->setData($data);
+      }
+
       return $value;
     }
     return $field;
