@@ -686,7 +686,7 @@ class Utils implements UtilsInterface {
     }
     // I guess we want silent errors for getoptions b/c we check it for failure separately
     if (!empty($result['is_error']) && $operation != 'getoptions') {
-      $bt = debug_backtrace();
+      $bt = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2, $params);
       $n = $bt[0]['function'] == 'wf_civicrm_api' ? 1 : 0;
       $file = explode('/', $bt[$n]['file']);
       if (isset($params['credit_card_number'])) {

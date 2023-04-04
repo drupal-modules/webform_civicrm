@@ -618,7 +618,7 @@ abstract class WebformCivicrmBase {
       $membership['is_active'] = $status_types[$membership['status_id']]['is_current_member'];
       $membership['status'] = $status_types[$membership['status_id']]['label'];
       $list = $membership['is_active'] ? 'active' : 'expired';
-      $$list[] = $membership;
+      ${$list}[] = $membership;
     }
 
     return array_merge($active, $expired);
